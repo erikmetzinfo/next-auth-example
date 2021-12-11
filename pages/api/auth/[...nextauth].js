@@ -15,19 +15,15 @@ export default NextAuth({
       server: process.env.EMAIL_SERVER,
       from: process.env.EMAIL_FROM,
     }),
-    // GithubProvider({
-    //   clientId: process.env.GITHUB_ID,
-    //   clientSecret: process.env.GITHUB_SECRET,
-    //   // https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps
-    //   scope: "read:user",
-    // }),
+    GithubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+      // https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps
+      scope: "read:user",
+    }),
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-    }),
-    GitHubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
     }),
   ],
   adapter: MongoDBAdapter(clientPromise),
