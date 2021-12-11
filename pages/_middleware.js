@@ -1,5 +1,6 @@
 import { getToken } from "next-auth/jwt";
-import { NextResponse } from "next/server";
+// import { NextResponse } from "next/server";
+import Router from "next/router";
 
 /** @param {import("next/server").NextRequest} req */
 export async function middleware(req) {
@@ -13,7 +14,8 @@ export async function middleware(req) {
     });
     // You could also check for any property on the session object,
     // like role === "admin" or name === "John Doe", etc.
-    if (!session) return NextResponse.redirect("/api/auth/signin");
+    if (!session) return Router.push("/api/auth/signin");
+    // if (!session) return NextResponse.redirect("/api/auth/signin");
 
     // If user is authenticated, continue.
   }
